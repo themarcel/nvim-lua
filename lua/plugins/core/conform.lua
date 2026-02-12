@@ -13,11 +13,12 @@ return {
 	config = function()
 		local typescript_setup = {
 			-- "eslint_d",
-			"eslint",
-			"prettierd",
-			"prettier",
-			"deno_fmt",
-			stop_after_first = true,
+			"oxfmt",
+			-- "eslint",
+			-- "prettierd",
+			-- "prettier",
+			-- "deno_fmt",
+			stop_after_first = false,
 		}
 		require("conform").setup {
 			formatters = {

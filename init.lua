@@ -25,6 +25,7 @@ require "features.update-fe-version"
 require "features.incdec"
 require "features.vale-accept"
 require "features.diff"
+require 'features.paste'
 
 -- code runners
 require "runners.bash"

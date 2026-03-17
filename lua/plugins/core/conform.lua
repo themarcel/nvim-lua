@@ -63,6 +63,7 @@ return {
 			},
 			formatters_by_ft = {
 				c = { "clang_format" },
+				elixir = { "mix" },
 				lua = { "stylua" },
 				json = { "fixjson" },
 				jsonc = {

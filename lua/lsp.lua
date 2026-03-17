@@ -20,6 +20,7 @@ local lsp_servers = {
 	"toml",
 	"typescript",
 	"css",
+	"elixir",
 	-- "vale",
 }
 

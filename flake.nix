@@ -1,29 +1,38 @@
 {
-  description = "Lua dev shell";
-
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-  inputs.flake-utils.url = "github:numtide/flake-utils";
+  description = "Marcel's Neovim Config";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
 
   outputs = {
     self,
     nixpkgs,
     flake-utils,
   }:
-    flake-utils.lib.eachDefaultSystem (system: let
+    {
+      homeManagerModules.default = {
+        config,
+        lib,
+        pkgs,
+        ...
+      }: {
+        config.programs.neovim.enable = true;
+        config.xdg.configFile."nvim".source = ./.;
+      };
+    }
+    // flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {inherit system;};
     in {
       devShells.default = pkgs.mkShell {
         packages = with pkgs; [
-          # pick exactly one interpreter; comment the other
-          # (lua5_4.withPackages (ps: with ps; [luafilesystem luaposix]))
           luajit
           lua-language-server
           nodePackages_latest.vscode-json-languageserver
-          stylua # formatter
-          luarocks # rock management
-          readline # nicer REPL history
+          stylua
+          luarocks
+          readline
         ];
-
         shellHook = ''
           echo "Lua shell on ${pkgs.luajit.version} – happy vim!"
         '';

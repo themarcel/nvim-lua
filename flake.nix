@@ -32,6 +32,10 @@
           stylua
           luarocks
           readline
+          fzf
+          fd
+          ripgrep
+          bat
         ];
         shellHook = ''
           echo "Lua shell on ${pkgs.luajit.version} – happy vim!"

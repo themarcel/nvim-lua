@@ -81,6 +81,8 @@ return {
 				typescriptreact = typescript_setup,
 				javascript = typescript_setup,
 				javascriptreact = typescript_setup,
+				html = { "prettier", "prettierd", stop_after_first = true },
+				xml = { "xmlformat", stop_after_first = true },
 				astro = {
 					"prettier",
 					"prettierd",

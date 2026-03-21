@@ -5,47 +5,43 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs =
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+  }: let
+    neovimTools = pkgs:
+      with pkgs; [
+        luajit
+        lua-language-server
+        nodePackages_latest.vscode-json-languageserver
+        stylua
+        luarocks
+        readline
+        fzf
+        fd
+        ripgrep
+        bat
+        mdx-language-server
+        xmlformat
+      ];
+  in
     {
-      self,
-      nixpkgs,
-      flake-utils,
-    }:
-    let
-      neovimTools =
-        pkgs: with pkgs; [
-          luajit
-          lua-language-server
-          nodePackages_latest.vscode-json-languageserver
-          stylua
-          luarocks
-          readline
-          fzf
-          fd
-          ripgrep
-          bat
-        ];
-    in
-    {
-      homeManagerModules.default =
-        {
-          config,
-          lib,
-          pkgs,
-          ...
-        }:
-        {
-          config.programs.neovim.enable = true;
-          config.programs.neovim.extraPackages = neovimTools pkgs;
-          config.xdg.configFile."nvim".source = ./.;
-        };
+      homeManagerModules.default = {
+        config,
+        lib,
+        pkgs,
+        ...
+      }: {
+        config.programs.neovim.enable = true;
+        config.programs.neovim.extraPackages = neovimTools pkgs;
+        config.xdg.configFile."nvim".source = ./.;
+      };
     }
     // flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-      in
-      {
+      system: let
+        pkgs = import nixpkgs {inherit system;};
+      in {
         devShells.default = pkgs.mkShell {
           packages = neovimTools pkgs;
           shellHook = ''

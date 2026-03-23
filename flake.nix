@@ -16,6 +16,8 @@
         pkgs: with pkgs; [
           # Core
           luajit
+          lua54Packages.luarocks-nix
+          lua51Packages.lua
           lua-language-server
           luarocks
           readline
@@ -23,6 +25,8 @@
           fd
           ripgrep
           bat
+          tree-sitter
+          gcc
 
           # VSCode Language Servers (JSON, CSS, HTML, ESLint)
           vscode-langservers-extracted
@@ -73,7 +77,7 @@
           gnumake
           cargo
           direnv
-          nodejs
+          nodejs_25
           yarn
           docker
           difftastic

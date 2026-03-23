@@ -27,6 +27,7 @@
           bat
           tree-sitter
           gcc
+          python3Minimal
 
           # VSCode Language Servers (JSON, CSS, HTML, ESLint)
           vscode-langservers-extracted
@@ -77,7 +78,7 @@
           gnumake
           cargo
           direnv
-          nodejs_25
+          nodejs
           yarn
           docker
           difftastic

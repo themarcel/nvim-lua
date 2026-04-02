@@ -2,38 +2,21 @@ local function safe_require(module_name, callback)
 	local status, module = pcall(require, module_name)
 	if status and callback then
 		callback(module)
-	elseif not status then
-		vim.api.nvim_echo(
-			{ { "Module " .. module_name .. " not found", "WarningMsg" } },
-			true,
-			{}
-		)
 	end
+	-- No else block = silent failure, which is usually better for a "clean" startup
 	return status, module
 end
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 vim.defer_fn(function()
-	safe_require("nvim-treesitter.configs", function(configs)
-		configs.setup {
-			-- auto_install = true,
-			highlight = {
-				enable = true,
-				disable = function(_, bufnr)
-					return vim.api.nvim_buf_line_count(bufnr) > 5000
-				end,
-				additional_vim_regex_highlighting = {
-					"org",
-					"diff",
-					"gitcommit",
-				},
-			},
-		}
-	end)
-
 	safe_require("nvim-treesitter.parsers", function(parsers)
-		local parser_config = parsers.get_parser_configs()
+		local parser_config
+		if type(parsers.get_parser_configs) == "table" then
+			parser_config = parsers.get_parser_configs
+		else
+			parser_config = parsers.get_parser_configs()
+		end
 
 		parser_config.kanshi = {
 			install_info = {
@@ -59,20 +42,6 @@ vim.defer_fn(function()
 			},
 			filetype = "zig", -- if filetype does not match the parser name
 		}
-		-- require("nvim-treesitter.parsers").get_parser_configs().kanshi = {
-		-- 	install_info = {
-		-- 		url = "~/clones/own/tree-sitter-kanshi/",
-		-- 		files = { "src/parser.c" },
-		-- 	},
-		-- 	filetype = "kanshi", -- Filetype associated with this grammar
-		-- }
-
-		-- vim.keymap.set(
-		-- 	"n",
-		-- 	"<leader>ts",
-		-- 	":TSPlaygroundToggle<CR>",
-		-- 	{ desc = "Toggle Treesitter playground" }
-		-- )
 	end)
 end, 0)
 

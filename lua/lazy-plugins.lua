@@ -43,17 +43,7 @@ require("lazy").setup({
 				"nvim-treesitter/nvim-treesitter-textobjects",
 				event = { "BufReadPost", "BufNewFile" },
 			},
-			{
-				"JoosepAlviste/nvim-ts-context-commentstring",
-				event = { "BufReadPost", "BufNewFile" },
-			},
 			{ "marcelarie/tree-sitter-kanshi", ft = "kanshi" },
-			{
-				"nushell/tree-sitter-nu",
-				ft = "nu",
-				-- build = ":TSUpdate nu",
-				commit = "e8bdcb9d4d57d999ad6d7c797f9f1808623df1b9",
-			},
 		},
 		build = ":TSUpdate",
 	},

@@ -67,6 +67,7 @@ return {
 			},
 			formatters_by_ft = {
 				c = { "clang_format" },
+				elixir = { "mix" },
 				lua = { "stylua" },
 				json = { "fixjson" },
 				jsonc = {
@@ -84,6 +85,8 @@ return {
 				typescriptreact = typescript_setup,
 				javascript = typescript_setup,
 				javascriptreact = typescript_setup,
+				html = { "prettier", "prettierd", stop_after_first = true },
+				xml = { "xmlformat", stop_after_first = true },
 				astro = {
 					"prettier",
 					"prettierd",

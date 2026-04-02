@@ -3,16 +3,18 @@ return {
 	opts = {},
 	lazy = true,
 	enabled = false, -- gcc comes from nvim core now
-	dependencies = {
-		"JoosepAlviste/nvim-ts-context-commentstring",
-	},
 	config = function()
-		---@diagnostic disable-next-line: missing-fields
-		require("Comment").setup {
-			pre_hook = require(
-				"ts_context_commentstring.integrations.comment_nvim"
-			).create_pre_hook(),
-		}
+		-- Updated configuration for compatibility with nvim-treesitter v1.0+
+		local ok, ts_context_commentstring = pcall(require, "ts_context_commentstring.integrations.comment_nvim")
+		if ok then
+			---@diagnostic disable-next-line: missing-fields
+			require("Comment").setup {
+				pre_hook = ts_context_commentstring.create_pre_hook(),
+			}
+		else
+			-- Fallback to default setup if module is not available
+			require("Comment").setup {}
+		end
 
 		local comment_ft = require "Comment.ft"
 		comment_ft.set("fish", { "# %s", "# %s #" })

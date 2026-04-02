@@ -21,6 +21,7 @@ local lsp_servers = {
 	"typescript",
 	"css",
 	"tailwindcss",
+	"elixir",
 	-- "vale",
 }
 

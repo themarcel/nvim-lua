@@ -59,7 +59,7 @@
           fixjson
           python3Packages.isort
           oxlint
-          nodePackages.prettier
+          prettier
           prettierd
           rustfmt
           shfmt

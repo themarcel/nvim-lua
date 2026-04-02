@@ -25,8 +25,9 @@ vim.g.loaded_shada_plugin = 1
 vim.g.loaded_spellfile_plugin = 1
 
 -- Global options (o)
-vim.o.splitbelow = true -- Horizontal splits will automatically be below
-vim.o.splitright = true -- Vertical splits will automatically be to the right
+vim.o.splitbelow = false
+vim.o.splitkeep = "screen"
+vim.o.splitright = true
 -- vim.o.timeoutlen = O
 -- vim.o.guifont = "FiraCode Nerd Font:h15"
 vim.opt.guicursor = "i:hor20-Cursor/lCursor" -- Add unerline cursor on Insert and Visual mode

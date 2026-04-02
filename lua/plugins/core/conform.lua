@@ -13,6 +13,7 @@ return {
 	config = function()
 		local typescript_setup = {
 			-- "eslint_d",
+			-- "oxlint",
 			"oxfmt",
 			-- "eslint",
 			-- "prettierd",
@@ -22,6 +23,9 @@ return {
 		}
 		require("conform").setup {
 			formatters = {
+				oxlint = {
+					args = { "lint", "--fix", "--stdin-filename", "$FILENAME" },
+				},
 				eslint_d = {
 					timeout_ms = 1000,
 					lsp_fallback = true,

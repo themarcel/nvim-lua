@@ -1,7 +1,13 @@
 return {
 	"dmtrKovalenko/fff.nvim",
 	-- build = "cargo build --release",
-	build = "nix run .#release", -- or if you are using nixos
+	-- build = "nix run .#release", -- or if you are using nixos
+	build = function()
+		-- this will download prebuild binary or try to use existing rustup toolchain to build from source
+		-- (if you are using lazy you can use gb for rebuilding a plugin if needed)
+		require("fff.download").download_or_build_binary()
+	end,
+	enabled = false,
 	opts = {
 		base_path = vim.fn.getcwd(),
 		prompt = "> ",
@@ -69,11 +75,36 @@ return {
 	},
 	keys = {
 		{
-			"<leader>i",
+			"<leader>f",
 			function()
 				require("fff").find_files()
 			end,
-			desc = "Open fff file picker",
+			desc = "FFFind files",
+		},
+		{
+			"<leader>rg",
+			function()
+				require("fff").live_grep()
+			end,
+			desc = "LiFFFe grep",
+		},
+		{
+			"<leader>rp",
+			function()
+				require("fff").live_grep {
+					grep = {
+						modes = { "fuzzy", "plain" },
+					},
+				}
+			end,
+			desc = "Live fffuzy grep",
+		},
+		{
+			"<leader>rw",
+			function()
+				require("fff").live_grep { query = vim.fn.expand "<cword>" }
+			end,
+			desc = "Search current word",
 		},
 	},
 }

@@ -1,4 +1,10 @@
 return {
+	-- {
+	-- 	"bluz71/vim-nightfly-colors",
+	-- 	name = "nightfly",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- },
 	-- Commented out unused colorschemes to improve startup time
 	-- Uncomment only the ones you want to use
 	-- {

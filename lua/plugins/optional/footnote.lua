@@ -5,12 +5,20 @@ return {
 	-- 	require("footnote").setup {}
 	-- end,
 	opts = {
+		debug_print = false,
 		keys = {
-			new_footnote = "<C-f>",
-			organize_footnotes = "",
-			next_footnote = "]f",
-			prev_footnote = "[f",
+			n = {
+				new_footnote = "<leader>fn",
+				organize_footnotes = "<leader>fo",
+				next_footnote = "]f",
+				prev_footnote = "[f",
+				link_footnote = "<leader>fl",
+			},
+			i = { new_footnote = "<C-f>" },
+			v = { link_footnote = "<leader>fl" },
 		},
+		organize_on_save = false,
 		organize_on_new = false,
+		case_sensitive_link = true,
 	},
 }

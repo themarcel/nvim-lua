@@ -33,20 +33,21 @@ require("lazy").setup({
 	--
 	-- 	},
 	-- },
-	{
-		-- Highlight, edit, and navigate code
-		"nvim-treesitter/nvim-treesitter",
-		-- Load treesitter when opening files with content
-		event = { "BufReadPost", "BufNewFile" },
-		dependencies = {
-			{
-				"nvim-treesitter/nvim-treesitter-textobjects",
-				event = { "BufReadPost", "BufNewFile" },
-			},
-			{ "marcelarie/tree-sitter-kanshi", ft = "kanshi" },
-		},
-		build = ":TSUpdate",
-	},
+  -- TODO: Fix nvim treesitter
+	-- {
+	-- 	-- Highlight, edit, and navigate code
+	-- 	"nvim-treesitter/nvim-treesitter",
+	-- 	-- Load treesitter when opening files with content
+	-- 	event = { "BufReadPost", "BufNewFile" },
+	-- 	dependencies = {
+	-- 		{
+	-- 			"nvim-treesitter/nvim-treesitter-textobjects",
+	-- 			event = { "BufReadPost", "BufNewFile" },
+	-- 		},
+	-- 		{ "marcelarie/tree-sitter-kanshi", ft = "kanshi" },
+	-- 	},
+	-- 	build = ":TSUpdate",
+	-- },
 	--    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
 
 	-- Dynamic plugin loading based on profile

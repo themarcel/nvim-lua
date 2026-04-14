@@ -5,7 +5,7 @@ require "options"
 require "lazy-bootstrap"
 require "lazy-plugins"
 
-require "treesitter-setup"
+-- require "treesitter-setup"
 require "commands"
 require "keymaps"
 require "neovide"

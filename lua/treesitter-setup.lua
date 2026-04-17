@@ -11,7 +11,7 @@ end
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 vim.defer_fn(function()
 	-- We skip nvim-treesitter.configs entirely as it is removed in v1.0+
-	
+
 	safe_require("nvim-treesitter.parsers", function(parsers)
 		-- Attempt to find the parser configuration table safely
 		local parser_config

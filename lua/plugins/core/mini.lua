@@ -363,6 +363,8 @@ return {
 
 		if vim.o.background == "light" then
 			vim.cmd.colorscheme "minispring"
+			vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#e8ece6" })
+			vim.api.nvim_set_hl(0, "CursorLine", { bg = "#d5d9d3" })
 		end
 	end,
 	keys = {

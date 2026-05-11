@@ -35,7 +35,9 @@ vim.api.nvim_set_hl(0, "CursorLine", { underline = false })
 
 -- vim.g.clipboard = "unnamedplus" -- Set in ./sys-clip.lua
 vim.opt.termguicolors = true
-vim.cmd.colorscheme "lunaperche"
+if vim.o.background ~= "light" then
+	vim.cmd.colorscheme "lunaperche"
+end
 
 vim.g.ai_cmp = false
 

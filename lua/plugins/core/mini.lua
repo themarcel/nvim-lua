@@ -360,6 +360,10 @@ return {
 		setup_mini_snippets(require("mini.snippets").setup)
 		setup_mini_starter(require("mini.starter").setup)
 		setup_mini_statusline(require("mini.statusline").setup)
+
+		if vim.o.background == "light" then
+			vim.cmd.colorscheme "minispring"
+		end
 	end,
 	keys = {
 		{ "<Leader>al", ":lua MiniStarter.open()<cr>", desc = "Starter menu" },

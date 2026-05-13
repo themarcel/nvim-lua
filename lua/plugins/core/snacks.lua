@@ -145,33 +145,33 @@ return {
 		-- 	end,
 		-- 	desc = "Live Grep",
 		-- },
-		{
-			"<leader>re",
-			function()
-				require("snacks").picker.grep {
-					title = "Grep (remember <c-g> to toggle live)",
-				}
-			end,
-			desc = "Live Grep",
-		},
-		{
-			"<leader>rw",
-			function()
-				require("snacks").picker.grep_word()
-			end,
-			desc = "Grep Current Word",
-		},
-		{
-			"<leader>rq",
-			function()
-				vim.cmd.cclose()
-				require("snacks").picker.qflist {
-					live = true,
-					title = "Quickfix",
-				}
-			end,
-			desc = "Quickfix → Snacks picker",
-		},
+		-- {
+		-- 	"<leader>re",
+		-- 	function()
+		-- 		require("snacks").picker.grep {
+		-- 			title = "Grep (remember <c-g> to toggle live)",
+		-- 		}
+		-- 	end,
+		-- 	desc = "Live Grep",
+		-- },
+		-- {
+		-- 	"<leader>rw",
+		-- 	function()
+		-- 		require("snacks").picker.grep_word()
+		-- 	end,
+		-- 	desc = "Grep Current Word",
+		-- },
+		-- {
+		-- 	"<leader>rq",
+		-- 	function()
+		-- 		vim.cmd.cclose()
+		-- 		require("snacks").picker.qflist {
+		-- 			live = true,
+		-- 			title = "Quickfix",
+		-- 		}
+		-- 	end,
+		-- 	desc = "Quickfix → Snacks picker",
+		-- },
 		{
 			"<leader>br",
 			function()
@@ -297,7 +297,10 @@ return {
 				snacks.picker {
 					title = "zoxide_paths",
 					finder = function()
-						local res = vim.system({ "zoxide", "query", "-l" }, { text = true }):wait()
+						local res = vim.system(
+							{ "zoxide", "query", "-l" },
+							{ text = true }
+						):wait()
 						local out = res.stdout or ""
 						local items = {}
 						for line in out:gmatch "[^\r\n]+" do

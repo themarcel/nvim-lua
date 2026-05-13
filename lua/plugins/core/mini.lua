@@ -60,8 +60,8 @@ local function setup_mini_diff(setup_diff)
 		delete = "#681300",
 		add = "#055800",
 		change = "#105090",
-		base_text = "#000000",
-		text_fg = "#ffffff",
+		base_text = "#ffffff",
+		text_fg = "#000000",
 	}
 
 	vim.api.nvim_create_augroup("MyDiffSigns", { clear = true })

@@ -35,6 +35,13 @@ return {
 			desc = "Find Files",
 		},
 		{
+			"<leader>rw",
+			function()
+				require("fzf-lua").grep_cword()
+			end,
+			desc = "Fzf Grep Current Word",
+		},
+		{
 			"<Leader>rg",
 			function()
 				require("fzf-lua").grep()

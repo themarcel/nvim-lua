@@ -24,6 +24,20 @@ return {
 					fzf = { ["ctrl-g"] = "toggle-search" },
 				},
 			},
+			fzf_colors = {
+				["fg"]      = { "fg", "Normal" },
+				["bg"]      = { "bg", "Normal" },
+				["fg+"]     = { "fg", "Normal" },
+				["bg+"]     = { "bg", "CursorLine" },
+				["hl"]      = { "fg", "Comment" },
+				["hl+"]     = { "fg", "Statement" },
+				["info"]    = { "fg", "PreProc" },
+				["prompt"]  = { "fg", "Conditional" },
+				["pointer"] = { "fg", "Exception" },
+				["marker"]  = { "fg", "Keyword" },
+				["spinner"] = { "fg", "Label" },
+				["header"]  = { "fg", "Comment" },
+			},
 		}
 	end,
 	keys = {

@@ -42,28 +42,28 @@ local on_attach = function(client, bufnr)
 
 	nmap(
 		"<leader>gd",
-		-- denols does not work with snacks lsp_definitions
+		-- denols does not work with fzf-lua lsp_definitions
 		client.name == "denols" and vim.lsp.buf.definition
 			or function()
-				require("snacks").picker.lsp_definitions()
+				require("fzf-lua").lsp_definitions()
 			end,
 		"[G]oto [D]efinition"
 	)
 	nmap("<leader>d", vim.diagnostic.setqflist, "Show [D] Diagnostics in qfl")
 	nmap("gr", client.name == "denols" and vim.lsp.buf.references or function()
-		require("snacks").picker.lsp_references()
+		require("fzf-lua").lsp_references()
 	end, "[G]oto [R]eferences")
 	nmap("gI", function()
-		require("snacks").picker.lsp_implementations()
+		require("fzf-lua").lsp_implementations()
 	end, "[G]oto [I]mplementation")
 	nmap("<leader>D", function()
-		require("snacks").picker.lsp_type_definitions()
+		require("fzf-lua").lsp_typedefs()
 	end, "Type [D]efinition")
 	nmap("<leader>ds", function()
-		require("snacks").picker.lsp_symbols()
+		require("fzf-lua").lsp_document_symbols()
 	end, "[D]ocument [S]ymbols")
 	nmap("<leader>ws", function()
-		require("snacks").picker.lsp_workspace_symbols()
+		require("fzf-lua").lsp_workspace_symbols()
 	end, "[W]orkspace [S]ymbols")
 
 	-- See `:help K` for why this keymap

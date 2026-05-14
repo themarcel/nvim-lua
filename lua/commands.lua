@@ -43,8 +43,8 @@ vim.api.nvim_create_user_command("ENV", function()
 		return
 	end
 
-	-- Use snacks picker to show files in ./ENV directory
-	require("snacks").picker.pick("files", {
+	-- Use fzf-lua to show files in ./ENV directory
+	require("fzf-lua").files({
 		cwd = "./ENV",
 	})
 end, {})

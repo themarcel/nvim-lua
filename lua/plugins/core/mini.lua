@@ -228,7 +228,6 @@ local function setup_mini_starter(setup_starter)
 	end
 
 	local starter = require "mini.starter"
-	local my_snacks_pickers = require "my.snacks_pick"
 
 	local version = vim.version()
 
@@ -268,7 +267,7 @@ local function setup_mini_starter(setup_starter)
 			{
 				name = "fc: changed files",
 				action = function()
-					my_snacks_pickers "changed_files"
+					require("fzf-lua").git_status()
 				end,
 				section = "Files",
 			},
@@ -301,17 +300,17 @@ local function setup_mini_starter(setup_starter)
 			},
 			{
 				name = "ff: find file",
-				action = "lua require('snacks').picker.files()",
+				action = "lua require('fzf-lua').files()",
 				section = "Files",
 			},
 			{
 				name = "h: help tags",
-				action = "lua require('snacks').picker.help()",
+				action = "lua require('fzf-lua').help_tags()",
 				section = "Help",
 			},
 			{
 				name = "fr: recent files",
-				action = "lua require('snacks').picker.recent()",
+				action = "lua require('fzf-lua').oldfiles()",
 				section = "Files",
 			},
 		},
@@ -352,7 +351,6 @@ return {
 	event = "VimEnter",
 	dependencies = {
 		{ "nvim-mini/mini.snippets", version = false },
-		{ "folke/snacks.nvim" },
 	},
 	config = function()
 		setup_mini_diff(require("mini.diff").setup)

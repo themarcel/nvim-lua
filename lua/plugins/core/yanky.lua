@@ -1,12 +1,11 @@
 return {
 	"gbprod/yanky.nvim",
 	opts = {},
-	dependencies = { "folke/snacks.nvim" },
 	keys = {
 		{
 			"<leader>v",
 			function()
-				Snacks.picker.yanky()
+				require("yanky.picker").fzf_lua()
 			end,
 			mode = { "n", "x" },
 			desc = "Open Yank History",

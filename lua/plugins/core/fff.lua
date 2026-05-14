@@ -99,12 +99,12 @@ return {
 			end,
 			desc = "Live fffuzy grep",
 		},
-		{
-			"<leader>rw",
-			function()
-				require("fff").live_grep { query = vim.fn.expand "<cword>" }
-			end,
-			desc = "Search current word",
-		},
+		-- {
+		-- 	"<leader>rw",
+		-- 	function()
+		-- 		require("fff").live_grep { query = vim.fn.expand "<cword>" }
+		-- 	end,
+		-- 	desc = "Search current word",
+		-- },
 	},
 }

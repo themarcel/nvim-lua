@@ -74,15 +74,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-local orig_ofp = vim.lsp.util.open_floating_preview
-vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
-	local bufnr, winid = orig_ofp(contents, syntax, opts, ...)
-	if bufnr then
-		vim.keymap.set("n", "gx", open_url.open, { buffer = bufnr, silent = true, desc = "Open link in float" })
-	end
-	return bufnr, winid
-end
-
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "tutor",
 	callback = function(ev)

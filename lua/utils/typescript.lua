@@ -1,18 +1,24 @@
-local M = { path = {} }
+local M = {}
 
-function M.get_typescript_server_path(root_dir)
-	local project_roots = vim.fs.find(
-		"node_modules",
-		{ path = root_dir, upward = true, limit = math.huge }
-	)
-	for _, project_root in ipairs(project_roots) do
-		local typescript_path = project_root .. "/typescript"
-		local stat = vim.loop.fs_stat(typescript_path)
-		if stat and stat.type == "directory" then
-			return typescript_path .. "/lib"
-		end
+function M.typescript_server_import_all()
+	if
+		vim.bo.filetype == "typescript"
+		or vim.bo.filetype == "typescriptreact"
+	then
+		vim.lsp.buf.code_action {
+			apply = true,
+			---@diagnostic disable-next-line: missing-fields
+			context = {
+				only = {
+					---@diagnostic disable-next-line: assign-type-mismatch
+					"source.addMissingImports.ts",
+				},
+			},
+		}
+	else
+		vim.api.nvim_err_writeln "Not a typescript file"
+		return
 	end
-	return ""
 end
 
 return M

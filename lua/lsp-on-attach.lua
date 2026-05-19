@@ -207,4 +207,14 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 	return orig_util_open_floating_preview(merged_contents, syntax, opts, ...)
 end
 
+-- Also bind gx in every float window to open URLs
+local _orig_ofp_gx = vim.lsp.util.open_floating_preview
+vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
+	local bufnr, winid = _orig_ofp_gx(contents, syntax, opts, ...)
+	if bufnr then
+		vim.keymap.set("n", "gx", require("open_url").open, { buffer = bufnr, silent = true, desc = "Open link in float" })
+	end
+	return bufnr, winid
+end
+
 return M

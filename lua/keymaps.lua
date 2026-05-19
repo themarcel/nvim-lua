@@ -21,8 +21,10 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<Right>", ":vertical resize -5<cr>", opt_ns)
 vim.keymap.set("n", "<Left>", ":vertical resize +5<cr>", opt_ns)
 
-vim.keymap.set("n", "cpp", "Vcp", { noremap = false, silent = true })
-vim.keymap.set("n", "cP", "cp$", { noremap = false, silent = true })
+-- System clipboard
+vim.keymap.set({ "n", "v" }, "cp", [["+y]]) -- copy to system clipboard
+vim.keymap.set("n", "cpp", [["+yy]]) -- copy whole line to system clipboard
+vim.keymap.set("n", "cP", [["+y$]]) -- copy to end of line to system clipboard
 
 vim.keymap.set("n", "n", "nzzzv", opt_ns)
 vim.keymap.set("n", "N", "Nzzzv", opt_ns)
@@ -172,13 +174,10 @@ vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
 
 vim.keymap.set("n", "<Leader>nh", ":noh<cr>")
-vim.keymap.set("n", "<Leader>yf", ':let @+ = expand("%")<cr>')
 
 vim.keymap.set("n", "<Leader>ac", ":AIChat<cr>")
 vim.keymap.set("n", "<Leader>ai", ":AI ")
 vim.keymap.set("v", "<Leader>ae", ":AIEdit ")
-
-vim.keymap.set("n", "<leader>ta", typescript_server_import_all)
 
 vim.keymap.set("n", "v", "v", opt_ns)
 vim.keymap.set("n", "gf", "gF", opt_ns)
@@ -218,16 +217,8 @@ vim.keymap.set("n", "<leader>mw", function() vim.cmd "MdWatch" end)
 
 vim.keymap.set("n", "<C-^>", "<cmd>buffer #<CR>", { desc = "Alternate buffer" })
 
-local vim_modes = "vn"
-for mode in string.gmatch(vim_modes, "%a") do
-	vim.keymap.set(mode, "ff", function(_, bufnr)
-		require("conform").format()
-		-- TODO: Check why diagnostics are cleared after formatting
-		vim.diagnostic.enable(bufnr)
-	end)
-	vim.keymap.set(mode, "<leader>yf", function()
-		vim.cmd [[silent!!yarn eslint --fix %]]
-	end)
-end
+vim.keymap.set({ "v", "n" }, "<leader>yf", function()
+	vim.cmd [[silent!!yarn eslint --fix %]]
+end, { desc = "Yarn eslint --fix current file" })
 
 -- vim: ts=2 sts=2 sw=2 et

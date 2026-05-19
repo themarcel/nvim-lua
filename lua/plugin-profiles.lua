@@ -15,12 +15,12 @@ function M.get_imports()
 
 	if profile == "full" then
 		return {
-			{ import = "plugins.core" },
+			{ import = "plugins" },
 			{ import = "plugins.optional" },
 		}
 	else -- minimal (default)
 		return {
-			{ import = "plugins.core" },
+			{ import = "plugins" },
 		}
 	end
 end

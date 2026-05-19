@@ -359,6 +359,19 @@ return {
 		setup_mini_starter(require("mini.starter").setup)
 		setup_mini_statusline(require("mini.statusline").setup)
 
+		-- mini.surround replaces nvim-surround (sa/sd/sr instead of ys/ds/cs)
+		require("mini.surround").setup {
+			mappings = {
+				add            = "sa", -- Add surrounding in Normal and Visual modes
+				delete         = "sd", -- Delete surrounding
+				find           = "sf", -- Find surrounding (to the right)
+				find_left      = "sF", -- Find surrounding (to the left)
+				highlight      = "sh", -- Highlight surrounding
+				replace        = "sr", -- Replace surrounding
+				update_n_lines = "sn", -- Update `n_lines`
+			},
+		}
+
 		if vim.o.background == "light" then
 			vim.cmd.colorscheme "minispring"
 			vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#e8ece6" })

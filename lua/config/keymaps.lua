@@ -1,5 +1,5 @@
 local persistend_qfl = require "features.persistend-qfl"
-local toggle_quickfix = require "utils.toggle-qf"
+local toggle_quickfix = require "lib.toggle-qf"
 
 local opts = { noremap = true, silent = true }
 local opt_ns = { noremap = true, silent = true }
@@ -175,10 +175,6 @@ vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
 
 vim.keymap.set("n", "<Leader>nh", ":noh<cr>")
-
-vim.keymap.set("n", "<Leader>ac", ":AIChat<cr>")
-vim.keymap.set("n", "<Leader>ai", ":AI ")
-vim.keymap.set("v", "<Leader>ae", ":AIEdit ")
 
 vim.keymap.set("n", "v", "v", opt_ns)
 vim.keymap.set("n", "gf", "gF", opt_ns)

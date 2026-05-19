@@ -1,4 +1,4 @@
-local runner = require "utils.runner"
+local runner = require "lib.runner"
 
 local function get_cargo_run_command(args)
 	if args ~= "" then
@@ -29,17 +29,17 @@ end, {
 })
 
 vim.api.nvim_create_user_command("CargoClippy", function()
-	local tmux = require "tmux"
+	local tmux = require "lib.tmux"
 	tmux.create_tmux_persistent_command "cargo clippy"
 end, { desc = "Run cargo clippy in tmux window" })
 
 vim.api.nvim_create_user_command("CargoTest", function()
-	local tmux = require "tmux"
+	local tmux = require "lib.tmux"
 	tmux.create_tmux_persistent_command "cargo test -- --show-output"
 end, { desc = "Run cargo test in tmux window" })
 
 vim.keymap.set("n", "<leader>ct", function()
-	local tmux = require "tmux"
+	local tmux = require "lib.tmux"
 	tmux.create_tmux_persistent_command "cargo test -- --show-output"
 end, {
 	desc = "Run cargo test in tmux window",

@@ -1,4 +1,4 @@
-local tmux = require "tmux"
+local tmux = require "lib.tmux"
 
 local function get_rust_test_under_cursor()
 	local current_line_num = vim.api.nvim_win_get_cursor(0)[1]

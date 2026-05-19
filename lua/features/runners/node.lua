@@ -1,4 +1,4 @@
-local runner = require "utils.runner"
+local runner = require "lib.runner"
 
 local function get_vitest_command(args)
 	return "npm run test %"

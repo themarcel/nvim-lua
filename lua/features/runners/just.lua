@@ -1,4 +1,4 @@
-local tmux = require "tmux"
+local tmux = require "lib.tmux"
 
 vim.api.nvim_create_user_command("JustRun", function()
 	tmux.create_tmux_persistent_command "just run"

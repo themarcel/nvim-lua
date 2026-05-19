@@ -1,4 +1,4 @@
-local tmux = require "tmux"
+local tmux = require "lib.tmux"
 
 vim.api.nvim_create_user_command("LazyGit", function()
 	tmux.create_tmux_command "lazygit"

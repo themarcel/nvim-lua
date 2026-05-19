@@ -1,4 +1,4 @@
-local runner = require "utils.runner"
+local runner = require "lib.runner"
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "c",

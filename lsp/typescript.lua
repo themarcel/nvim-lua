@@ -1,5 +1,5 @@
-local flash = require "utils.flash"
-local on_attach = require("lsp-on-attach").on_attach
+local flash = require "lib.flash"
+local on_attach = require("lsp.on-attach").on_attach
 
 -- 1 import symbol under cursor
 local function import_symbol()

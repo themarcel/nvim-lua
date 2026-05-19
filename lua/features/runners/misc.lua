@@ -1,4 +1,4 @@
-local tmux = require "tmux"
+local tmux = require "lib.tmux"
 
 vim.api.nvim_create_user_command("FindTodos", function()
 	tmux.create_tmux_command "~/scripts/find-todos.sh"

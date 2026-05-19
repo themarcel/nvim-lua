@@ -1,4 +1,4 @@
-local on_attach = require("lsp-on-attach").on_attach
+local on_attach = require("lsp.on-attach").on_attach
 
 ---@diagnostic disable-next-line: param-type-not-match
 vim.lsp.config("*", { on_attach = on_attach })

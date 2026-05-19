@@ -1,6 +1,5 @@
--- [[ Install `lazy.nvim` plugin manager ]]
+-- Bootstrap lazy.nvim
 --    https://github.com/folke/lazy.nvim
---    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system {
@@ -8,18 +7,15 @@ if not vim.loop.fs_stat(lazypath) then
 		"clone",
 		"--filter=blob:none",
 		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
+		"--branch=stable",
 		lazypath,
 	}
 end
 vim.opt.rtp:prepend(lazypath)
 
--- [[ Configure plugins ]]
 require("lazy").setup({
-	{ "tpope/vim-sleuth", event = "BufReadPost" }, -- Detect tabstop and shiftwidth automatically
-
-	-- Dynamic plugin loading based on profile
-	unpack(require("plugin-profiles").get_imports()),
+	{ "tpope/vim-sleuth", event = "BufReadPost" },
+	{ import = "plugins" },
 }, {
 	change_detection = {
 		notify = false,

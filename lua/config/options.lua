@@ -30,12 +30,6 @@ vim.o.splitbelow = false
 vim.o.splitkeep = "screen"
 vim.o.splitright = true
 vim.opt.guicursor = "i:hor20-Cursor/lCursor"
-vim.api.nvim_set_hl(0, "CursorLine", { underline = false })
-
-vim.opt.termguicolors = true
-if vim.o.background ~= "light" then
-	vim.cmd.colorscheme "lunaperche"
-end
 
 vim.g.ai_cmp = false
 
@@ -61,8 +55,8 @@ vim.wo.signcolumn = "yes"
 vim.wo.colorcolumn = "80"
 
 vim.opt.laststatus = 3
-vim.cmd "set undolevels=10000"
-vim.cmd "set undoreload=10000"
+vim.o.undolevels = 10000
+vim.o.undoreload = 10000
 vim.opt.listchars = {
 	tab = "∙ ",
 	trail = "∙",
@@ -79,27 +73,5 @@ vim.opt.backup = false
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 vim.opt.showcmd = false
-
-vim.diagnostic.config {
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = "e ",
-			[vim.diagnostic.severity.WARN] = "w ",
-			[vim.diagnostic.severity.HINT] = "h ",
-			[vim.diagnostic.severity.INFO] = "i ",
-		},
-	},
-	underline = false,
-	undercurl = false,
-	update_in_insert = false,
-	severity_sort = false,
-	virtual_lines = false,
-	virtual_text = {
-		prefix = "●",
-	},
-	float = {
-		source = "always",
-	},
-}
 
 -- vim: ts=2 sts=2 sw=2 et

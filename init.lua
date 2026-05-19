@@ -1,15 +1,15 @@
 -- require "profiler"
-require "options"
+require "config.options"
+require "config.diagnostics"
+require "config.colors"
 
-require "lazy-plugins"
+require "config.lazy"
 
-require "commands"
-require "keymaps"
-require "keybind-helpers"
+require "config.commands"
+require "config.keymaps"
+require "config.keybind-helpers"
 require "neovide"
-require "autocmd"
-require "color-settings"
-require "tmux"
+require "config.autocmds"
 require "lsp"
 
 -- features
@@ -18,17 +18,16 @@ require "features.update-fe-version"
 require "features.incdec"
 require "features.vale-accept"
 require "features.diff"
-require 'features.paste'
+require "features.paste"
 
 -- code runners
-require "runners.bash"
-require "runners.c"
-require "runners.rust"
-require "runners.node"
-require "runners.just"
-require "runners.test"
-require "runners.git"
-require "runners.misc"
+require "features.runners.bash"
+require "features.runners.c"
+require "features.runners.rust"
+require "features.runners.node"
+require "features.runners.just"
+require "features.runners.test"
+require "features.runners.git"
+require "features.runners.misc"
 
--------------------------------------------------------------------------------
--- -- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et

@@ -7,7 +7,7 @@ end
 -- create a command to toggle the quickfix window
 vim.api.nvim_create_user_command(
 	"TSImportAll",
-	require("utils.typescript").typescript_server_import_all,
+	require("lib.typescript").typescript_server_import_all,
 	{}
 )
 

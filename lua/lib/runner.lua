@@ -1,5 +1,5 @@
 local M = {}
-local tmux = require "tmux"
+local tmux = require "lib.tmux"
 
 -- cache management
 local function get_cache_dir()

@@ -7,7 +7,7 @@
 --- For Deno projects, run: npm install -D typescript
 
 local get_typescript_server_path =
-	require("utils.typescript").get_typescript_server_path
+	require("lib.typescript").get_typescript_server_path
 
 ---@type vim.lsp.Config
 return {

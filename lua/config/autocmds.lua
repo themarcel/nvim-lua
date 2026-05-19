@@ -19,7 +19,7 @@ au("ColorScheme", {
 		vim.cmd [[highlight! link DiffDelete CustomDiffDelete]]
 	end,
 })
-local git_commit_auto_commands = ag("GitCommitAutoCommands", { clear = true })
+
 local add_80_chars_on_markdown = ag("Add80CharsOnMarkdown", { clear = true })
 local python_line_length = ag("PythonLineLength", { clear = true })
 local relative_numbers_insert_mode = ag("RelativeNumbersInsertModes", { clear = true })
@@ -82,7 +82,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 	end,
 })
 
-local open_url = require "open_url"
+local open_url = require "lib.open-url"
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "help", "man", "markdown" },
@@ -110,3 +110,5 @@ vim.api.nvim_create_autocmd(
 	{ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" },
 	{ pattern = "*.*", command = "checktime", group = auto_reload_group }
 )
+
+-- vim: ts=2 sts=2 sw=2 et

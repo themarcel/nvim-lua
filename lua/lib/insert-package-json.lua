@@ -1,4 +1,4 @@
-local root_markers_with_field = require('utils.root-markers-with-field').root_markers_with_field
+local root_markers_with_field = require("lib.root-markers-with-field").root_markers_with_field
 local M = {}
 
 function M.insert_package_json(root_files, field, fname)

@@ -39,7 +39,7 @@
 ---
 --- /!\ When using flat config files, you need to use them across all your packages in your monorepo, as it's a global setting for the server.
 
-local util = require "utils"
+local util = require "lib"
 
 local eslint_config_files = {
 	".eslintrc",

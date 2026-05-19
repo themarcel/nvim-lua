@@ -207,7 +207,7 @@ local function setup_mini_starter(setup_starter)
 			{
 				name = "sr: session reload",
 				action = function()
-					require "utils.toggle-qf"()
+					require "lib.toggle-qf"()
 					vim.cmd "silent AutoSession restore"
 				end,
 				section = "Sessions",

@@ -114,7 +114,6 @@ return {
 		end
 	end,
 	on_attach = function(client, bufnr)
-		require("lsp.on-attach").on_attach(client, bufnr)
 		vim.api.nvim_buf_create_user_command(
 			bufnr,
 			"LspClangdSwitchSourceHeader",

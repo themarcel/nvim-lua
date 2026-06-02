@@ -50,8 +50,13 @@ return {
 
 		-- (Default) Only show the documentation popup when manually triggered
 		completion = {
-			ghost_text = { enabled = false },
-			documentation = { auto_show = true },
+			ghost_text = {
+				enabled = false,
+			},
+			documentation = {
+				treesitter_highlighting = false,
+				auto_show = true,
+			},
 			list = {
 				selection = {
 					preselect = true,
@@ -59,6 +64,7 @@ return {
 				},
 			},
 			menu = {
+				border = "solid",
 				draw = {
 					columns = {
 						{ "label", "label_description", gap = 1 },

@@ -1,13 +1,3 @@
-vim.opt.termguicolors = true
-
-local theme_file = io.open(vim.fn.expand "$HOME/.cache/.theme_mode", "r")
-if theme_file then
-	vim.o.background = theme_file:read "*l" or "dark"
-	theme_file:close()
-else
-	vim.o.background = "dark"
-end
-
 vim.cmd.set "t_Co=256"
 
 local preferred = {
@@ -23,6 +13,7 @@ local bg = vim.o.background
 if not pcall(vim.cmd.colorscheme, preferred[bg]) then
 	pcall(vim.cmd.colorscheme, fallback[bg])
 end
+vim.o.background = bg
 
 vim.api.nvim_set_hl(0, "CursorLine", { underline = false })
 

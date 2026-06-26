@@ -83,7 +83,7 @@
         direnv
         nodejs
         yarn
-        docker
+        podman
         difftastic
         util-linux
         coreutils
